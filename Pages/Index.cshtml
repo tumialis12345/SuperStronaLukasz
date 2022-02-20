@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Łukasz śmierdzi bardzo</h1>
+    @if(DateTime.Today.Month == 2 && DateTime.Today.Day == 20)
+    {
+      <h5>Fajerwerki animacja</h5>
+      string path = @"wwwroot\fireworks";
+      var paths = Directory.GetFiles(path);
+      foreach(var fireworkPath in paths)
+      {
+        var pathWithoutWwwroot = fireworkPath.Remove(0, "wwwroot/".Length).Replace("//", "/");
+        <img src="@pathWithoutWwwroot"/>
+      }
+    }
+</div>
